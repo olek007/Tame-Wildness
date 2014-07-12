@@ -38,9 +38,7 @@ public class PlayerControls : MonoBehaviour {
 	    {
 			player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpHeight);
 		}
-<<<<<<< HEAD
-=======
-		
+
 		if((Input.GetButtonDown("Fire1")) && (pushForceLvl == 1) && (!isOnCD))
 		{
 			Boom();
@@ -56,7 +54,6 @@ public class PlayerControls : MonoBehaviour {
 				isOnCD = false;
 			}	
 		}
->>>>>>> origin/master
 	}
 	
 	
@@ -77,8 +74,7 @@ public class PlayerControls : MonoBehaviour {
 		}
 		
 	}
-<<<<<<< HEAD
-=======
+
 	
 	void Boom()
 	{
@@ -103,6 +99,4 @@ public class PlayerControls : MonoBehaviour {
 		isOnCD = true;
 	}
 	
-	
->>>>>>> origin/master
 }

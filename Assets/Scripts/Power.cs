@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Power : MonoBehaviour {
 
-<<<<<<< HEAD
+
 	public GameObject Player;
 	public Collider2D boomRange;	
-=======
+
 	public GameObject player;
 	private bool wasDragUsed = false;
->>>>>>> origin/master
+
 
 	void Boom()
 	{
@@ -36,6 +36,15 @@ public class Power : MonoBehaviour {
 		
 	}
 	
+	void Drag()
+	{
+		Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		gameObject.transform.position = point;
+		Screen.showCursor = false;
+		
+		
+	}
+	
 	void OnMouseDown()
 	{	
 		if((PlayerControls.pushForceLvl == 2) && (!PlayerControls.isOnCD))
@@ -49,31 +58,10 @@ public class Power : MonoBehaviour {
 	{
 		if(PlayerControls.pushForceLvl == 3 && (!PlayerControls.isOnCD))
 		{
-<<<<<<< HEAD
-			case 1:
-			{
-				Boom();
-			}
-			break;
-
-			case 2:
-			{
-				Push();
-			}
-			break;
-			
-			case 3:
-			{
-				Drag();
-			}
-			break;
-
-=======
 			Drag();
-			
->>>>>>> origin/master
 		}
 	}
+	
 	
 	void OnMouseUp()
 	{
