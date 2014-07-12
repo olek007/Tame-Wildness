@@ -3,16 +3,14 @@ using System.Collections;
 
 public class Death : MonoBehaviour {
 
-	public GameObject Player;
+	public GameObject player;
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		if(col.gameObject == Player)
-		{
-			PlayerEQ.Alive = false;
+		if(col.gameObject == player)
+			PlayerEQ.alive = false;
 			Time.timeScale=0.00000000000001f;
-			Destroy(Player,5.0f);
-			Destroy(gameObject);
+			Destroy(player,5.0f);
 		}
 	}
 }

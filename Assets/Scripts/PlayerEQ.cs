@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerEQ : MonoBehaviour {
 
-	public static bool Alive = true;
+	public static bool alive = true;
 	int buttonWidth = 50;
 	int buttonHeigh = 50;
 	int margin = 20;
@@ -16,7 +16,7 @@ public class PlayerEQ : MonoBehaviour {
 
 	void OnGUI()
 	{
-		if (Alive) 
+		if (alive) 
 		{
 			buttons [0] = GUI.Button (new Rect (Screen.width / 3, Screen.height - buttonHeigh - margin, buttonWidth, buttonHeigh), "lalala");
 			buttons [1] = GUI.Button (new Rect (Screen.width / 3 + buttonWidth + margin, Screen.height - buttonHeigh - margin, buttonWidth, buttonHeigh), "lalala");
