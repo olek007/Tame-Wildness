@@ -3,19 +3,18 @@ using System.Collections;
 
 public class WizardNPC : MonoBehaviour {
 
-	public Sprite[] dialog;
-	private bool keyPressed = false;
+	private string[] dialogi = new string[5];
 	private bool isTalking = false;
 	private int dialogState = 0;
-	
-	private string[] dialogi;
 
 	// Use this for initialization
 	void Start () {
 	
 		dialogi[0] = "Ach!  Nie spodziewalem sie, ze akurat Ty obudzisz w sobie tą moc.";
-		dialogi[1] = "Ach!  Nie spodziewalem sie, ze akurat Ty obudzisz w sobie tą moc.";
-		dialogi[2] = "Ach!  Nie spodziewalem sie, ze akurat Ty obudzisz w sobie tą moc.";
+		dialogi[1] = "Jaką moc? O czym Ty mówisz?";
+		dialogi[2] = "Nie mam zbyt wiele czasu. Nauczę Cię używać tej mocy, lecz nie licz na nic wielkiego.";
+		dialogi[3] = "Powiesz mi co się stało?!";
+		dialogi[4] = "Nie mamy czasu! Pospiesz się!";
 	
 	}
 	
@@ -27,6 +26,11 @@ public class WizardNPC : MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
 				dialogState++;
+			}
+			
+			if(dialogState>5)
+			{
+				EndDialog ();
 			}
 		}
 		
@@ -66,6 +70,24 @@ public class WizardNPC : MonoBehaviour {
 				case 2:
 				{
 					GUI.Label(new Rect(250,250,100,100),dialogi[1]);
+				}
+				break;
+				
+				case 3:
+				{
+					GUI.Label(new Rect(250,250,100,100),dialogi[2]);
+				}
+				break;
+				
+				case 4:
+				{
+					GUI.Label(new Rect(250,250,100,100),dialogi[3]);
+				}
+				break;
+				
+				case 5:
+				{
+					GUI.Label(new Rect(250,250,100,100),dialogi[4]);
 				}
 				break;
 			}	
