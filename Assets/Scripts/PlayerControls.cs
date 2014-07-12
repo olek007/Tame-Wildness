@@ -14,7 +14,7 @@ public class PlayerControls : MonoBehaviour {
 	public static bool isOnCD;
 	private bool canJump = true;
 	public Animator anim;
-	public float pushForce = 100;
+	public static float pushForce = 1000000;
 	public static bool canWalk;
 
 	// Use this for initialization
@@ -34,25 +34,21 @@ public class PlayerControls : MonoBehaviour {
 		{	
 			if (Input.GetKey (KeyCode.LeftArrow))
 			{
-				player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
-				anim.SetBool ("walking", true);
+				player.GetComponent<Rigidbody2D>().velocity = new Vector2(-movementSpeed, player.GetComponent<Rigidbody2D>().velocity.y );
+				
 	
 			} 
 			else if (Input.GetKey (KeyCode.RightArrow)) 
 			{
-				player.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
-				anim.SetBool ("walking", true);
+				player.GetComponent<Rigidbody2D>().velocity = new Vector2(movementSpeed, player.GetComponent<Rigidbody2D>().velocity.y);
+			
 			} 
-			else 
-			{
-				anim.SetBool("walking", false);
-			}
 	
 			if (Input.GetButtonDown("Jump"))
 		    {
 				if(canJump)
 				{
-					player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpHeight);
+					player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 1000 * jumpHeight);
 				}
 			}
 	
