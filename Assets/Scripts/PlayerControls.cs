@@ -13,11 +13,9 @@ public class PlayerControls : MonoBehaviour {
 	public static float timeSinceSpellCast = 0;
 	public static bool isOnCD;
 	private bool canJump = true;
-<<<<<<< HEAD
 	public Animator anim;
-=======
 	public float pushForce = 100;
->>>>>>> FETCH_HEAD
+	public static bool canWalk;
 
 	// Use this for initialization
 	void Start () {
@@ -25,53 +23,54 @@ public class PlayerControls : MonoBehaviour {
 		pushForceLvl = 1;
 		isOnCD = false;
 		anim = GetComponent<Animator> ();
+		canWalk = true;
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKey (KeyCode.LeftArrow))
-		{
-<<<<<<< HEAD
-			player.transform.Translate (new Vector2 (-1 * movementSpeed * Time.deltaTime, 0));
-			//player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
-			anim.SetBool ("walking", true);
-
-		} else
-		if (Input.GetKey (KeyCode.RightArrow)) 
-		{
-			player.transform.Translate (new Vector2 (1 * movementSpeed * Time.deltaTime, 0));
-			//player.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
-			anim.SetBool ("walking", true);
-		} else 
-		{
-			anim.SetBool("walking", false);
-=======
-			//player.transform.Translate(new Vector2(-1 * movementSpeed * Time.deltaTime, 0));
-			player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
-		}
-		if (Input.GetKey (KeyCode.RightArrow)) 
-		{
-			//player.transform.Translate(new Vector2(1 * movementSpeed * Time.deltaTime, 0));
-			player.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
->>>>>>> FETCH_HEAD
-		}
-
-		if (Input.GetButtonDown("Jump"))
-	    {
-			if(canJump)
+		if(canWalk)	
+		{	
+			if (Input.GetKey (KeyCode.LeftArrow))
 			{
-				player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpHeight);
+				player.transform.Translate (new Vector2 (-1 * movementSpeed * Time.deltaTime, 0));
+				//player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
+				anim.SetBool ("walking", true);
+	
+			} else
+			if (Input.GetKey (KeyCode.RightArrow)) 
+			{
+				player.transform.Translate (new Vector2 (1 * movementSpeed * Time.deltaTime, 0));
+				//player.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
+				anim.SetBool ("walking", true);
+			} else 
+			{
+				anim.SetBool("walking", false);
+				//player.transform.Translate(new Vector2(-1 * movementSpeed * Time.deltaTime, 0));
+				player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
+			}
+			if (Input.GetKey (KeyCode.RightArrow)) 
+			{
+				//player.transform.Translate(new Vector2(1 * movementSpeed * Time.deltaTime, 0));
+				player.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
+			}
+	
+			if (Input.GetButtonDown("Jump"))
+		    {
+				if(canJump)
+				{
+					player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpHeight);
+				}
+			}
+	
+			if((Input.GetButtonDown("Fire1")) && (pushForceLvl == 1) && (!isOnCD))
+			{
+				Boom();
 			}
 		}
-
-		if((Input.GetButtonDown("Fire1")) && (pushForceLvl == 1) && (!isOnCD))
-		{
-			Boom();
-		}
-		
-		
+			
+			
 		if(isOnCD)
 		{
 			timeSinceSpellCast += Time.deltaTime;
@@ -81,6 +80,7 @@ public class PlayerControls : MonoBehaviour {
 				isOnCD = false;
 			}	
 		}
+	
 	}
 	
 
