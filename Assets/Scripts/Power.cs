@@ -3,11 +3,6 @@ using System.Collections;
 
 public class Power : MonoBehaviour {
 
-
-	public GameObject Player;
-	public Collider2D boomRange;	
-
-	public GameObject player;
 	private bool wasDragUsed = false;
 
 
