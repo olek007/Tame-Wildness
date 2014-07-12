@@ -9,10 +9,7 @@ public class PlayerEQ : MonoBehaviour {
 	int margin = 20;
 	bool[] buttons;
 
-	public void AliveSet()
-	{
-		Alive = false;
-	}
+
 
 	void Start()
 	{
@@ -34,5 +31,8 @@ public class PlayerEQ : MonoBehaviour {
 			GUI.Button(new Rect(Screen.width/2-400,Screen.height/2-200,800,300),"GAME OVER");
 		}
 	}
-
+	public void AliveSet()
+	{
+		Alive = false;
+	}
 }
