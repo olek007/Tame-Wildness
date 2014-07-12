@@ -3,8 +3,13 @@ using System.Collections;
 
 public class Power : MonoBehaviour {
 
+<<<<<<< HEAD
 	public GameObject Player;
 	public Collider2D boomRange;	
+=======
+	public GameObject player;
+	private bool wasDragUsed = false;
+>>>>>>> origin/master
 
 	void Boom()
 	{
@@ -25,15 +30,26 @@ public class Power : MonoBehaviour {
 	
 	void Push()
 	{
+		Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		gameObject.transform.position = point;
+		Screen.showCursor = false;
 		
-	
 	}
-
+	
 	void OnMouseDown()
-	{
-		
-		switch (PlayerControls.pushForceLvl)
+	{	
+		if((PlayerControls.pushForceLvl == 2) && (!PlayerControls.isOnCD))
 		{
+			Push();
+			PlayerControls.StartCD();
+		}
+	}
+	
+	void OnMouseDrag()
+	{
+		if(PlayerControls.pushForceLvl == 3 && (!PlayerControls.isOnCD))
+		{
+<<<<<<< HEAD
 			case 1:
 			{
 				Boom();
@@ -52,7 +68,24 @@ public class Power : MonoBehaviour {
 			}
 			break;
 
+=======
+			Drag();
+			
+>>>>>>> origin/master
 		}
-
 	}
+	
+	void OnMouseUp()
+	{
+		Screen.showCursor = true;
+		
+		if(wasDragUsed)      // żeby cooldown nie był liczony od rozpoczęcia przeciągania przedmiotu
+		{
+			PlayerControls.StartCD();
+			wasDragUsed = false;
+		}
+		
+	}
+	
+	
 }
