@@ -47,13 +47,6 @@ public class PlayerControls : MonoBehaviour {
 			} else 
 			{
 				anim.SetBool("walking", false);
-				//player.transform.Translate(new Vector2(-1 * movementSpeed * Time.deltaTime, 0));
-				player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
-			}
-			if (Input.GetKey (KeyCode.RightArrow)) 
-			{
-				//player.transform.Translate(new Vector2(1 * movementSpeed * Time.deltaTime, 0));
-				player.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
 			}
 	
 			if (Input.GetButtonDown("Jump"))
