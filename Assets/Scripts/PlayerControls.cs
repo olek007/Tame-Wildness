@@ -13,27 +13,35 @@ public class PlayerControls : MonoBehaviour {
 	public static float timeSinceSpellCast = 0;
 	public static bool isOnCD;
 	private bool canJump = true;
+	public Animator anim;
 
 	// Use this for initialization
 	void Start () {
 	
 		pushForceLvl = 1;
 		isOnCD = false;
+		anim = GetComponent<Animator> ();
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKey (KeyCode.LeftArrow)) 
+		if (Input.GetKey (KeyCode.LeftArrow))
 		{
-			player.transform.Translate(new Vector2(-1 * movementSpeed * Time.deltaTime, 0));
+			player.transform.Translate (new Vector2 (-1 * movementSpeed * Time.deltaTime, 0));
 			//player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
-		}
+			anim.SetBool ("walking", true);
+
+		} else
 		if (Input.GetKey (KeyCode.RightArrow)) 
 		{
-			player.transform.Translate(new Vector2(1 * movementSpeed * Time.deltaTime, 0));
+			player.transform.Translate (new Vector2 (1 * movementSpeed * Time.deltaTime, 0));
 			//player.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
+			anim.SetBool ("walking", true);
+		} else 
+		{
+			anim.SetBool("walking", false);
 		}
 
 		if (Input.GetButtonDown("Jump"))
