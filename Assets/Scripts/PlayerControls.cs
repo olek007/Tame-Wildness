@@ -13,7 +13,11 @@ public class PlayerControls : MonoBehaviour {
 	public static float timeSinceSpellCast = 0;
 	public static bool isOnCD;
 	private bool canJump = true;
+<<<<<<< HEAD
 	public Animator anim;
+=======
+	public float pushForce = 100;
+>>>>>>> FETCH_HEAD
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +33,7 @@ public class PlayerControls : MonoBehaviour {
 
 		if (Input.GetKey (KeyCode.LeftArrow))
 		{
+<<<<<<< HEAD
 			player.transform.Translate (new Vector2 (-1 * movementSpeed * Time.deltaTime, 0));
 			//player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
 			anim.SetBool ("walking", true);
@@ -42,6 +47,15 @@ public class PlayerControls : MonoBehaviour {
 		} else 
 		{
 			anim.SetBool("walking", false);
+=======
+			//player.transform.Translate(new Vector2(-1 * movementSpeed * Time.deltaTime, 0));
+			player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
+		}
+		if (Input.GetKey (KeyCode.RightArrow)) 
+		{
+			//player.transform.Translate(new Vector2(1 * movementSpeed * Time.deltaTime, 0));
+			player.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
+>>>>>>> FETCH_HEAD
 		}
 
 		if (Input.GetButtonDown("Jump"))
@@ -69,13 +83,7 @@ public class PlayerControls : MonoBehaviour {
 		}
 	}
 	
-	void LateUpdate()
-	{
-		transform.rotation = new Quaternion(0,0,0,0);
-		
-		//if(gameObject.collider2D.
-	}
-	
+
 	
 	void OnTriggerEnter2D (Collider2D collider)
 	{
@@ -98,19 +106,30 @@ public class PlayerControls : MonoBehaviour {
 	
 	void Boom()
 	{
-		foreach(GameObject boomable in boomableItems)
-		{
-			Vector2 Dimension;
-			Dimension.x = boomable.transform.position.x - player.transform.position.x;
-			Dimension.y = boomable.transform.position.y - player.transform.position.y;
-			float Distance;
-			Distance = Vector2.Distance (boomable.transform.position, player.transform.position);
-			Dimension.x /= Distance;
-			Dimension.y /= Distance;
-			gameObject.rigidbody2D.AddForce(Dimension);
-	   	}
+		bool wasBoomUsed = false;
 		
-		StartCD();
+		foreach(GameObject boomable in Radar.usables)
+		{
+			
+			if(Vector2.Distance(boomable.transform.position, transform.position) < 20)
+			{
+			
+				Vector2 Dimension;
+				Dimension.x = boomable.transform.position.x - player.transform.position.x;
+				Dimension.y = boomable.transform.position.y - player.transform.position.y;
+				float Distance;
+				Distance = Vector2.Distance (boomable.transform.position, player.transform.position);
+				Dimension.x /= Distance;
+				Dimension.y /= Distance;
+				boomable.rigidbody2D.AddForce(Dimension * pushForce);
+				wasBoomUsed = true;
+			}
+	   	}
+	   	
+		if(wasBoomUsed)
+		{
+			StartCD();
+		}
 	}
 	
 	public static void StartCD()
