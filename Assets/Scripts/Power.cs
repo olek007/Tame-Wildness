@@ -4,6 +4,7 @@ using System.Collections;
 public class Power : MonoBehaviour {
 
 	public GameObject player;
+	private bool wasDragUsed = false;
 
 	void Push()
 	{
@@ -20,29 +21,41 @@ public class Power : MonoBehaviour {
 	
 	void Drag()
 	{
+		Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		gameObject.transform.position = point;
+		Screen.showCursor = false;
 		
+	}
 	
-	}
-
 	void OnMouseDown()
-	{
-		
-		switch (PlayerControls.pushForceLvl)
+	{	
+		if((PlayerControls.pushForceLvl == 2) && (!PlayerControls.isOnCD))
 		{
-			
-			case 2:
-			{
-				Push();
-			}
-			break;
-			
-			case 3:
-			{
-				//Drag();
-			}
-			break;
-
+			Push();
+			PlayerControls.StartCD();
 		}
-
 	}
+	
+	void OnMouseDrag()
+	{
+		if(PlayerControls.pushForceLvl == 3 && (!PlayerControls.isOnCD))
+		{
+			Drag();
+			
+		}
+	}
+	
+	void OnMouseUp()
+	{
+		Screen.showCursor = true;
+		
+		if(wasDragUsed)      // żeby cooldown nie był liczony od rozpoczęcia przeciągania przedmiotu
+		{
+			PlayerControls.StartCD();
+			wasDragUsed = false;
+		}
+		
+	}
+	
+	
 }

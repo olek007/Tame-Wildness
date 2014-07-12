@@ -9,11 +9,15 @@ public class PlayerControls : MonoBehaviour {
 	public float jumpHeight = 1000;
 	public static List<GameObject> boomableItems = new List<GameObject>();  // trigger o ustalonym rozmiarze musi być na dziecku playera
 	public static int pushForceLvl;
+	public float CDtime = 3.0f;
+	public static float timeSinceSpellCast = 0;
+	public static bool isOnCD;
 
 	// Use this for initialization
 	void Start () {
 	
 		pushForceLvl = 1;
+		isOnCD = false;
 	
 	}
 	
@@ -35,9 +39,20 @@ public class PlayerControls : MonoBehaviour {
 			player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpHeight);
 		}
 		
-		if((Input.GetButtonDown("Fire1")) && (pushForceLvl == 1))
+		if((Input.GetButtonDown("Fire1")) && (pushForceLvl == 1) && (!isOnCD))
 		{
 			Boom();
+		}
+		
+		
+		if(isOnCD)
+		{
+			timeSinceSpellCast += Time.deltaTime;
+			
+			if(timeSinceSpellCast >= CDtime)
+			{
+				isOnCD = false;
+			}	
 		}
 	}
 	
@@ -74,6 +89,15 @@ public class PlayerControls : MonoBehaviour {
 			Dimension.y /= Distance;
 			gameObject.rigidbody2D.AddForce(Dimension);
 	   	}
-			
+		
+		StartCD();
 	}
+	
+	public static void StartCD()
+	{
+		timeSinceSpellCast = 0;
+		isOnCD = true;
+	}
+	
+	
 }
