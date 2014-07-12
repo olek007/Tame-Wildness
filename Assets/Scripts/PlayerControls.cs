@@ -14,7 +14,7 @@ public class PlayerControls : MonoBehaviour {
 	public static bool isOnCD;
 	private bool canJump = true;
 	public Animator anim;
-	public static float pushForce = 100;
+	public static float pushForce = 1000000;
 	public static bool canWalk;
 
 	// Use this for initialization
