@@ -12,6 +12,7 @@ public class PlayerControls : MonoBehaviour {
 	public float CDtime = 3.0f;
 	public static float timeSinceSpellCast = 0;
 	public static bool isOnCD;
+	private bool canJump = true;
 
 	// Use this for initialization
 	void Start () {
@@ -32,11 +33,15 @@ public class PlayerControls : MonoBehaviour {
 		if (Input.GetKey (KeyCode.RightArrow)) 
 		{
 			player.transform.Translate(new Vector2(1 * movementSpeed * Time.deltaTime, 0));
+			//player.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
 		}
 
 		if (Input.GetButtonDown("Jump"))
 	    {
-			player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpHeight);
+			if(canJump)
+			{
+				player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpHeight);
+			}
 		}
 
 		if((Input.GetButtonDown("Fire1")) && (pushForceLvl == 1) && (!isOnCD))
@@ -54,6 +59,13 @@ public class PlayerControls : MonoBehaviour {
 				isOnCD = false;
 			}	
 		}
+	}
+	
+	void LateUpdate()
+	{
+		transform.rotation = new Quaternion(0,0,0,0);
+		
+		//if(gameObject.collider2D.
 	}
 	
 	
