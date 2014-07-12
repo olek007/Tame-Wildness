@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class PlayerControls : MonoBehaviour {
 
+	public Sprite[] animation;
 	public GameObject player;
 	public float movementSpeed = 10;
 	public float jumpHeight = 50;
@@ -16,10 +17,13 @@ public class PlayerControls : MonoBehaviour {
 	public Animator anim;
 	public static float pushForce = 1000000;
 	public static bool canWalk;
+	int animationFrame;
+	float timer;
 
 	// Use this for initialization
 	void Start () {
-	
+		timer = 1.0f;
+		animationFrame = 0;
 		pushForceLvl = 1;
 		isOnCD = false;
 		anim = GetComponent<Animator> ();
@@ -34,15 +38,61 @@ public class PlayerControls : MonoBehaviour {
 		{	
 			if (Input.GetKey (KeyCode.LeftArrow))
 			{
+				timer-=Time.deltaTime;
+				if(timer>0.75f)
+				{
+					animationFrame=1;
+					gameObject.GetComponent<SpriteRenderer>().sprite = animation[animationFrame];
+				}else if(timer>0.5f)
+				{
+					animationFrame=2;
+					gameObject.GetComponent<SpriteRenderer>().sprite = animation[animationFrame];
+				}else if(timer>0.25f)
+				{
+					animationFrame=3;
+					gameObject.GetComponent<SpriteRenderer>().sprite = animation[animationFrame];
+				}else if(timer>0.0f)
+				{
+					animationFrame=4;
+					gameObject.GetComponent<SpriteRenderer>().sprite = animation[animationFrame];
+				}
+				if(timer<=0.0f)
+				{
+					timer=1.0f;
+				}
 				player.GetComponent<Rigidbody2D>().velocity = new Vector2(-movementSpeed, player.GetComponent<Rigidbody2D>().velocity.y );
-				
-	
+
 			} 
 			else if (Input.GetKey (KeyCode.RightArrow)) 
 			{
 				player.GetComponent<Rigidbody2D>().velocity = new Vector2(movementSpeed, player.GetComponent<Rigidbody2D>().velocity.y);
-			
-			} 
+				timer-=Time.deltaTime;
+				if(timer>0.75f)
+				{
+					animationFrame=4;
+					gameObject.GetComponent<SpriteRenderer>().sprite = animation[animationFrame];
+				}else if(timer>0.5f)
+				{
+					animationFrame=3;
+					gameObject.GetComponent<SpriteRenderer>().sprite = animation[animationFrame];
+				}else if(timer>0.25f)
+				{
+					animationFrame=2;
+					gameObject.GetComponent<SpriteRenderer>().sprite = animation[animationFrame];
+				}else if(timer>0.0f)
+				{
+					animationFrame=1;
+					gameObject.GetComponent<SpriteRenderer>().sprite = animation[animationFrame];
+				}
+				if(timer<=0.0f)
+				{
+					timer=1.0f;
+				}
+			} else
+			{
+				gameObject.GetComponent<SpriteRenderer>().sprite = animation[0];
+				timer=1.0f;
+			}
 	
 			if (Input.GetButtonDown("Jump"))
 		    {
