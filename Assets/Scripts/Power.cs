@@ -3,27 +3,22 @@ using System.Collections;
 
 public class Power : MonoBehaviour {
 
-	public GameObject Player;
-	public Collider2D boomRange;	
+	public GameObject player;
 
-	void Boom()
+	void Push()
 	{
-		/*
 		Vector2 Dimension;
-		Dimension.x = gameObject.transform.position.x - Player.transform.position.x;
-		Dimension.y = gameObject.transform.position.y - Player.transform.position.y;
+		Dimension.x = transform.position.x - player.transform.position.x;
+		Dimension.y = transform.position.y - player.transform.position.y;
 		float Distance;
-		Distance = Vector2.Distance (gameObject.transform.position, Player.transform.position);
+		Distance = Vector2.Distance (transform.position, player.transform.position);
 		Dimension.x /= Distance;
 		Dimension.y /= Distance;
-		gameObject.rigidbody2D.AddForce (Dimension);
-		
-		*/
-		
+		gameObject.rigidbody2D.AddForce(Dimension);
 		
 	}
 	
-	void Push()
+	void Drag()
 	{
 		
 	
@@ -34,12 +29,7 @@ public class Power : MonoBehaviour {
 		
 		switch (PlayerControls.pushForceLvl)
 		{
-			case 1:
-			{
-				Boom();
-			}
-			break;
-
+			
 			case 2:
 			{
 				Push();
@@ -48,7 +38,7 @@ public class Power : MonoBehaviour {
 			
 			case 3:
 			{
-				Drag();
+				//Drag();
 			}
 			break;
 
