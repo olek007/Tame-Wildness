@@ -34,17 +34,16 @@ public class PlayerControls : MonoBehaviour {
 		{	
 			if (Input.GetKey (KeyCode.LeftArrow))
 			{
-				player.transform.Translate (new Vector2 (-1 * movementSpeed * Time.deltaTime, 0));
-				//player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
+				player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
 				anim.SetBool ("walking", true);
 	
-			} else
-			if (Input.GetKey (KeyCode.RightArrow)) 
+			} 
+			else if (Input.GetKey (KeyCode.RightArrow)) 
 			{
-				player.transform.Translate (new Vector2 (1 * movementSpeed * Time.deltaTime, 0));
-				//player.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
+				player.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
 				anim.SetBool ("walking", true);
-			} else 
+			} 
+			else 
 			{
 				anim.SetBool("walking", false);
 			}
