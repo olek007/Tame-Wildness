@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerControls : MonoBehaviour {
 
 	public GameObject player;
 	public float movementSpeed = 10;
 	public float jumpHeight = 1000;
+	public static List<GameObject> boomableItems = new List<GameObject>();
+	public static int pushForceLvl;
 
 	// Use this for initialization
 	void Start () {
+	
+		pushForceLvl = 1;
 	
 	}
 	
@@ -29,9 +34,24 @@ public class PlayerControls : MonoBehaviour {
 	    {
 			player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpHeight);
 		}
-
+	}
+	
+	
+	void OnTriggerEnter (Collider2D collider)
+	{
+		if(collider2D.gameObject.layer == 4)
+		{
+			boomableItems.Add(collider.gameObject);	
+		}
+	
+	}
+	
+	void OnTriggerExit(Collider2D collider)
+	{
+		if(collider2D.gameObject.layer == 4)
+		{
+			boomableItems.Remove(collider.gameObject);	
+		}
 		
-	
-	
 	}
 }
