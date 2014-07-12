@@ -10,6 +10,7 @@ public class Death : MonoBehaviour {
 		if(col.gameObject == DeathCause)
 		{
 			Destroy(gameObject);
+
 		}
 	}
 
