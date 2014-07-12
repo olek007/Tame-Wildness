@@ -60,7 +60,7 @@ public class PlayerControls : MonoBehaviour {
 	}
 	
 	
-	void OnTriggerEnter (Collider2D collider)
+	void OnTriggerEnter2D (Collider2D collider)
 	{
 		if(collider2D.gameObject.layer == 4)
 		{
@@ -69,7 +69,7 @@ public class PlayerControls : MonoBehaviour {
 	
 	}
 	
-	void OnTriggerExit(Collider2D collider)
+	void OnTriggerExit2D(Collider2D collider)
 	{
 		if(collider2D.gameObject.layer == 4)
 		{
