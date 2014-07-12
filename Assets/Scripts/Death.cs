@@ -3,13 +3,14 @@ using System.Collections;
 
 public class Death : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	public GameObject DeathCause;
+
+	void OnCollisionEnter (Collision col)
+	{
+		if(col.gameObject == DeathCause)
+		{
+			Destroy(gameObject);
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }
