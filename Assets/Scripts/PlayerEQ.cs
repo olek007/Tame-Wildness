@@ -29,4 +29,5 @@ public class PlayerEQ : MonoBehaviour {
 			GUI.Button(new Rect(Screen.width/2-400,Screen.height/2-200,800,300),"GAME OVER");
 		}
 	}
+
 }
