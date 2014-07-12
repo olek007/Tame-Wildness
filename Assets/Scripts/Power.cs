@@ -48,7 +48,7 @@ public class Power : MonoBehaviour {
 			
 			case 3:
 			{
-				Drag();
+				//Drag();
 			}
 			break;
 
