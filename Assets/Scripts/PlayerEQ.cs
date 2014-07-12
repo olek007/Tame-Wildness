@@ -3,13 +3,11 @@ using System.Collections;
 
 public class PlayerEQ : MonoBehaviour {
 
-	public bool Alive = true;
+	public static bool Alive = true;
 	int buttonWidth = 50;
 	int buttonHeigh = 50;
 	int margin = 20;
 	bool[] buttons;
-
-
 
 	void Start()
 	{
@@ -30,9 +28,5 @@ public class PlayerEQ : MonoBehaviour {
 		{
 			GUI.Button(new Rect(Screen.width/2-400,Screen.height/2-200,800,300),"GAME OVER");
 		}
-	}
-	public void AliveSet()
-	{
-		Alive = false;
 	}
 }
