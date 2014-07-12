@@ -13,7 +13,7 @@ public class Power : MonoBehaviour {
 
 	void Start()
 	{
-		Radar.usable.Add(gameObject);
+		Radar.usables.Add(gameObject);
 	}
 	
 	void Push()
