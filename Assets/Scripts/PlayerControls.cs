@@ -6,7 +6,7 @@ public class PlayerControls : MonoBehaviour {
 
 	public GameObject player;
 	public float movementSpeed = 10;
-	public float jumpHeight = 1000;
+	public float jumpHeight = 50;
 	public static List<GameObject> boomableItems = new List<GameObject>();
 	public static int pushForceLvl;
 	public float CDtime = 3.0f;
