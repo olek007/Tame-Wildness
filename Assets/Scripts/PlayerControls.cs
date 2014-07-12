@@ -40,7 +40,6 @@ public class PlayerControls : MonoBehaviour {
 			} 
 			else if (Input.GetKey (KeyCode.RightArrow)) 
 			{
-				//player.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 *  movementSpeed * 1000.0f * Time.deltaTime, 0));
 				player.GetComponent<Rigidbody2D>().velocity = new Vector2(movementSpeed, player.GetComponent<Rigidbody2D>().velocity.y);
 			
 			} 
