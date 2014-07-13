@@ -13,13 +13,13 @@ public class PlayerControls : MonoBehaviour {
 	public static float timeSinceSpellCast = 0;
 	public static bool isOnCD;
 	private bool canJump = true;
-	public Animator anim;
-	public static float pushForce = 1000000;
+	private Animator anim;
+	public static float pushForce = 2000000;   //1000000
 	public static bool canWalk;
 
 	void Start ()
 	{
-		pushForceLvl = 1;
+		pushForceLvl = 0;
 		isOnCD = false;
 		anim = GetComponent<Animator> ();
 		canWalk = true;
@@ -33,11 +33,13 @@ public class PlayerControls : MonoBehaviour {
 			{
 				anim.SetBool("move", true);
 				player.GetComponent<Rigidbody2D>().velocity = new Vector2(-movementSpeed, player.GetComponent<Rigidbody2D>().velocity.y);
+				transform.rotation = new Quaternion(0, 180, 0, 0);
 			}
 			else if (Input.GetKey(KeyCode.RightArrow))
 			{
 				anim.SetBool("move", true);
 				player.GetComponent<Rigidbody2D>().velocity = new Vector2(movementSpeed, player.GetComponent<Rigidbody2D>().velocity.y);
+				transform.rotation = new Quaternion(0, 0, 0, 0);
 			}
 			else
 			{
