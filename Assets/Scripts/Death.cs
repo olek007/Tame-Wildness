@@ -10,8 +10,8 @@ public class Death : MonoBehaviour {
 		if(col.gameObject == player)
 		{
 			PlayerEQ.alive = false;
-			Time.timeScale=0.00000000000001f;
-			Destroy(player,5.0f);
+			PlayerControls.canWalk = false;
+			Destroy(player, 5.0f);	
 		}
 	}
 }

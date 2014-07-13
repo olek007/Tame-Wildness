@@ -6,6 +6,7 @@ public class Power : MonoBehaviour {
 	private bool wasDragUsed = false;
 
 
+
 	void Start()
 	{
 		Radar.usables.Add(gameObject);
@@ -16,16 +17,13 @@ public class Power : MonoBehaviour {
 		Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		gameObject.transform.position = point;
 		Screen.showCursor = false;
-		
 	}
 	
 	void Drag()
 	{
 		Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		gameObject.transform.position = point;
-		Screen.showCursor = false;
-		
-		
+		Screen.showCursor = false;	
 	}
 	
 	void OnMouseDown()
@@ -49,7 +47,6 @@ public class Power : MonoBehaviour {
 	void OnMouseUp()
 	{
 		Screen.showCursor = true;
-		
 		if(wasDragUsed)      // żeby cooldown nie był liczony od rozpoczęcia przeciągania przedmiotu
 		{
 			PlayerControls.StartCD();
@@ -57,6 +54,5 @@ public class Power : MonoBehaviour {
 		}
 		
 	}
-	
 	
 }

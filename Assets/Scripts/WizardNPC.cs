@@ -7,7 +7,8 @@ public class WizardNPC : MonoBehaviour {
 	private bool isTalking = false;
 	private int dialogState = 0;
 
-	// Use this for initialization
+
+
 	void Start () {
 	
 		dialogi[0] = "Ach!  Nie spodziewalem sie, ze akurat Ty obudzisz w sobie tą moc.";
@@ -18,7 +19,6 @@ public class WizardNPC : MonoBehaviour {
 	
 	}
 	
-	// Update is called once per frame
 	void Update () 
 	{
 		if(isTalking)
@@ -33,7 +33,6 @@ public class WizardNPC : MonoBehaviour {
 				EndDialog ();
 			}
 		}
-		
 	}
 	
 	void OnTriggerEnter2D (Collider2D col)
@@ -46,7 +45,6 @@ public class WizardNPC : MonoBehaviour {
 			dialogState = 1;
 		}
 	}
-	
 	
 	void EndDialog()
 	{
