@@ -27,6 +27,8 @@ public class PlayerControls : MonoBehaviour {
 	
 	void Update () 
 	{
+		anim.SetFloat("speed", player.GetComponent<Rigidbody2D>().velocity.x);
+		Debug.Log(player.GetComponent<Rigidbody2D>().velocity.x);
 		if (canWalk)
 		{
 			if (Input.GetKey(KeyCode.LeftArrow))
