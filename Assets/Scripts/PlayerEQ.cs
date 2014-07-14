@@ -26,7 +26,7 @@ public class PlayerEQ : MonoBehaviour {
 			buttons[5] = GUI.Button(new Rect(Screen.width / 3 + (buttonWidth + margin) * 5, Screen.height - buttonHeigh - margin, buttonWidth, buttonHeigh), "empty");
 		} else 
 		{
-			GUI.Button(new Rect(Screen.width/2-400,Screen.height/2-200,800,300),"GAME OVER");
+			GUI.Label(new Rect(Screen.width / 2 - 800, Screen.height / 2 - 300, 800, 300), "GAME OVER");
 		}
 	}
 

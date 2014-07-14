@@ -14,16 +14,16 @@ public class Power : MonoBehaviour {
 	
 	void Push()
 	{
-		Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Vector2 point = Camera.current.ScreenToWorldPoint(Input.mousePosition);
 		gameObject.transform.position = point;
 		Screen.showCursor = false;
 	}
 	
 	void Drag()
 	{
-		Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Vector2 point = Camera.current.ScreenToWorldPoint(Input.mousePosition);
 		gameObject.transform.position = point;
-		Screen.showCursor = false;	
+		Screen.showCursor = false;
 	}
 	
 	void OnMouseDown()
