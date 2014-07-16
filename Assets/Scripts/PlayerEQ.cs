@@ -44,10 +44,10 @@ public class PlayerEQ : MonoBehaviour {
 		}
 	}
 
-	public static void AddItem(GameObject item, GameObject usableItem)
+	public static void AddItem (GameObject item)//, GameObject usableItem)
 	{
 		items.Add(item);
-		itemsUses.Add(usableItem);
+		//itemsUses.Add(usableItem);
 	}
 
 }

@@ -22,7 +22,7 @@ public class Item : MonoBehaviour
 	{
 		if (col.gameObject.layer == 8)
 		{
-			PlayerEQ.AddItem(gameObject, gameObject.GetComponent<Shovel>());
+			PlayerEQ.AddItem(gameObject);
 		}
 	}
 }
