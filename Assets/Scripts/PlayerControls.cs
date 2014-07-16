@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlayerControls : MonoBehaviour {
 
 	public GameObject player;
-	public float movementSpeed = 10;
+	private float movementSpeed = 10;
 	public float jumpHeight = 50;
 	public static List<GameObject> boomableItems = new List<GameObject>();
 	public static int pushForceLvl;
@@ -19,9 +19,9 @@ public class PlayerControls : MonoBehaviour {
 
 	void Start ()
 	{
-		pushForceLvl = 0;
+		pushForceLvl = 3;
 		isOnCD = false;
-		anim = GetComponent<Animator> ();
+		anim = GetComponent<Animator> ();       
 		canWalk = true;
 	}
 	

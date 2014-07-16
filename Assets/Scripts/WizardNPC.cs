@@ -39,7 +39,7 @@ public class WizardNPC : MonoBehaviour {
 	
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		if(col.gameObject.layer == 8)
+		if(col.gameObject.layer == 8 && (PlayerControls.pushForceLvl == 0))
 		{
 			PlayerControls.canWalk = false;
 			PlayerControls.pushForceLvl = 1;
