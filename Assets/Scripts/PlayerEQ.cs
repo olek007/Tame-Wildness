@@ -43,6 +43,11 @@ public class PlayerEQ : MonoBehaviour {
 
 		if (buttons[0] && items[0] && digable)
 		{
+			items[0].GetComponent<Shovel>().Digged();
+		}
+
+		if (digable && Input.GetKey(KeyCode.DownArrow))
+		{
 			items[0].GetComponent<Shovel>().Dig();
 		}
 		
