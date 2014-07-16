@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+
 public class Item : MonoBehaviour
 {
-
 	public  Texture ikona;
 
 	// Use this for initialization
@@ -22,7 +23,10 @@ public class Item : MonoBehaviour
 	{
 		if (col.gameObject.layer == 8)
 		{
-			PlayerEQ.AddItem(gameObject);
+			//if(!PlayerEQ.items.Contains(gameObject))
+			{
+				PlayerEQ.AddItem(gameObject);
+			}
 		}
 	}
 }

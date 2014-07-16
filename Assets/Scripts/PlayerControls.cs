@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class PlayerControls : MonoBehaviour {
 
 	public GameObject player;
-	private float movementSpeed = 10;
-	public float jumpHeight = 50;
+	private float movementSpeed = 2;
+	public float jumpHeight = 10;
 	public static List<GameObject> boomableItems = new List<GameObject>();
 	public static int pushForceLvl;
 	public float CDtime = 3.0f;
@@ -28,7 +28,6 @@ public class PlayerControls : MonoBehaviour {
 	void Update () 
 	{
 		anim.SetFloat("speed", player.GetComponent<Rigidbody2D>().velocity.x);
-		Debug.Log(player.GetComponent<Rigidbody2D>().velocity.x);
 		if (canWalk)
 		{
 			if (Input.GetKey(KeyCode.LeftArrow))

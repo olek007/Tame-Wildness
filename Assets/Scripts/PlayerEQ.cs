@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,28 +9,27 @@ public class PlayerEQ : MonoBehaviour {
 	int buttonWidth = 50;
 	int buttonHeigh = 50;
 	int margin = 20;
-	bool[] buttons;
-	private static List<GameObject> itemsUses = new List<GameObject>();
-	private static List<GameObject> items = new List<GameObject>();
+	public bool[] buttons;
+	public static List<GameObject> items = new List<GameObject>();
 
 	void Start()
 	{
-		buttons = new bool[6];
+		buttons = new bool[1];	
 	}
 
-	
-	
-	
+
+
+
 	void OnGUI()
 	{
+		
 		if (alive) 
 		{
-			buttons[0] = GUI.Button(new Rect(Screen.width / 3, Screen.height - buttonHeigh - margin, buttonWidth, buttonHeigh), items[0].GetComponent<Item>().ikona);
-			buttons[1] = GUI.Button(new Rect(Screen.width / 3 + buttonWidth + margin, Screen.height - buttonHeigh - margin, buttonWidth, buttonHeigh), "empty");
-			buttons[2] = GUI.Button(new Rect(Screen.width / 3 + (buttonWidth + margin) * 2, Screen.height - buttonHeigh - margin, buttonWidth, buttonHeigh), "empty");
-			buttons[3] = GUI.Button(new Rect(Screen.width / 3 + (buttonWidth + margin) * 3, Screen.height - buttonHeigh - margin, buttonWidth, buttonHeigh), "empty");
-			buttons[4] = GUI.Button(new Rect(Screen.width / 3 + (buttonWidth + margin) * 4, Screen.height - buttonHeigh - margin, buttonWidth, buttonHeigh), "empty");
-			buttons[5] = GUI.Button(new Rect(Screen.width / 3 + (buttonWidth + margin) * 5, Screen.height - buttonHeigh - margin, buttonWidth, buttonHeigh), "empty");
+			for (int i = 0; i < items.Count; i++)
+			{
+				Array.Resize<bool>(ref buttons,i+1);
+				buttons[i] = GUI.Button(new Rect(Screen.width / 3 + (buttonWidth + margin) * i, Screen.height - buttonHeigh - margin, buttonWidth, buttonHeigh), items[i].GetComponent<Item>().ikona);
+			}
 		} 
 		else 
 		{
@@ -37,17 +37,15 @@ public class PlayerEQ : MonoBehaviour {
 		}
 
 
-		foreach (bool button in buttons)
+		if(buttons[0] && items[0])
 		{
-
-
+			items[0].GetComponent<Shovel>().Dig();
 		}
 	}
 
-	public static void AddItem (GameObject item)//, GameObject usableItem)
+	public static void AddItem (GameObject item)
 	{
 		items.Add(item);
-		//itemsUses.Add(usableItem);
 	}
 
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Shovel : MonoBehaviour {
 
-	
+	public Collider2D colHole;
 
 	// Use this for initialization
 	void Start () {
@@ -15,8 +15,9 @@ public class Shovel : MonoBehaviour {
 	
 	}
 
-	void Action()
+	public void Dig()
 	{
-
+		colHole.enabled = false;
 	}
+	
 }
