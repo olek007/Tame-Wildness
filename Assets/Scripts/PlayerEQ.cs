@@ -9,12 +9,14 @@ public class PlayerEQ : MonoBehaviour {
 	int buttonWidth = 50;
 	int buttonHeigh = 50;
 	int margin = 20;
-	public bool[] buttons;
+	public static bool[] buttons;
 	public static List<GameObject> items = new List<GameObject>();
+	public bool digable;
 
 	void Start()
 	{
-		buttons = new bool[1];	
+		digable = false;
+		buttons = new bool[1];
 	}
 
 
@@ -27,7 +29,10 @@ public class PlayerEQ : MonoBehaviour {
 		{
 			for (int i = 0; i < items.Count; i++)
 			{
-				Array.Resize<bool>(ref buttons,i+1);
+				if (i >= buttons.Length)
+				{
+					Array.Resize<bool>(ref buttons, i + 1);
+				}
 				buttons[i] = GUI.Button(new Rect(Screen.width / 3 + (buttonWidth + margin) * i, Screen.height - buttonHeigh - margin, buttonWidth, buttonHeigh), items[i].GetComponent<Item>().ikona);
 			}
 		} 
@@ -36,16 +41,15 @@ public class PlayerEQ : MonoBehaviour {
 			GUI.Label(new Rect(Screen.width / 2 - 800, Screen.height / 2 - 300, 800, 300), "GAME OVER");
 		}
 
-
-		if(buttons[0] && items[0])
+		if (buttons[0] && items[0] && digable)
 		{
 			items[0].GetComponent<Shovel>().Dig();
 		}
+		
 	}
 
 	public static void AddItem (GameObject item)
 	{
 		items.Add(item);
 	}
-
 }

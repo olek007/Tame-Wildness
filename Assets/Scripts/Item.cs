@@ -23,9 +23,10 @@ public class Item : MonoBehaviour
 	{
 		if (col.gameObject.layer == 8)
 		{
-			//if(!PlayerEQ.items.Contains(gameObject))
+			if(!PlayerEQ.items.Contains(gameObject))
 			{
 				PlayerEQ.AddItem(gameObject);
+				gameObject.renderer.active = false;
 			}
 		}
 	}
